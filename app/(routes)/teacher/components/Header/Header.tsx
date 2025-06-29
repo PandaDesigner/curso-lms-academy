@@ -14,7 +14,7 @@ import { FormCreateCourse } from './form-create-course/FormCreateCourse'
 export const Header = () => {
     return (
         <div className='my-4 mx-6 border rounded-lg bg-gradient-to-r 
-        from-indigo-100/85 to-blue-100'>
+        from-white to-blue-50 drop-shadow-xl'>
             <div className='flex justify-between items-center py-4 px-6'>
                 <h1 className='text-indigo-950 font-bold'>
                     {headerConstant.title}

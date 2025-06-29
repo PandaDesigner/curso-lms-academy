@@ -2,7 +2,8 @@
 import z from 'zod';
 import { formSchema } from './FormCreateCourse.form';
 import { zodResolver } from "@hookform/resolvers/zod"
-
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 import { Button } from "@/components/ui/button"
 import {
@@ -17,9 +18,12 @@ import {
 import { Input } from "@/components/ui/input"
 import { useForm } from 'react-hook-form';
 import { formTeacher, headerConstant } from '../constant/constants';
+import { toast } from 'sonner';
+
 
 
 export const FormCreateCourse = () => {
+    const router = useRouter();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -28,8 +32,18 @@ export const FormCreateCourse = () => {
         },
     })
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        console.log(values)
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        try {
+            const response = await axios.post('/api/course', values);
+            toast('Course created successfully 🎉');
+            form.reset();
+            router.push(`/teacher/${response.data.id}`);
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+            toast.error('Error creating course 😢');
+        }
+
     }
 
     return (
@@ -77,7 +91,9 @@ export const FormCreateCourse = () => {
                     type="submit"
                     className='bg-violet-900 transition-all
                     border-violet-50 border-1 rounded-md text-white hover:bg-violet-950'
-                >{headerConstant.submitBtn}</Button>
+                >
+                    {headerConstant.submitBtn}
+                </Button>
             </form>
         </Form>
     )
