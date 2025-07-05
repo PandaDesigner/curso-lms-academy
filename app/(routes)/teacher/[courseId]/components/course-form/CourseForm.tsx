@@ -28,7 +28,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import {Textarea} from "@/components/ui/textarea";
-import {CONSTANTS} from "@/app/(routes)/teacher/[courseId]/constants/constants.";
+import {Constants} from "@/app/(routes)/teacher/[courseId]/constants/constants";
 
 import {toast} from "sonner";
 
@@ -74,7 +74,7 @@ export default function CourseForm({ course }: ICourseForm) {
                             name="title"
                             render={({field}) => (
                                 <FormItem>
-                                    <FormLabel>{CONSTANTS.course_title}</FormLabel>
+                                    <FormLabel>{Constants.course_title}</FormLabel>
                                     <FormControl>
                                         <Input placeholder="title" {...field} />
                                     </FormControl>
@@ -90,7 +90,7 @@ export default function CourseForm({ course }: ICourseForm) {
                             name='slug'
                             render={({field}) => (
                                 <FormItem>
-                                    <FormLabel>{CONSTANTS.course_slug}</FormLabel>
+                                    <FormLabel>{Constants.course_slug}</FormLabel>
                                     <FormControl>
                                         <Input placeholder='title-slug' {...field} />
                                     </FormControl>
@@ -106,7 +106,7 @@ export default function CourseForm({ course }: ICourseForm) {
                             name="category"
                             render={({field}) => (
                                 <FormItem>
-                                    <FormLabel>{CONSTANTS.course_category}</FormLabel>
+                                    <FormLabel>{Constants.course_category}</FormLabel>
                                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                                         <FormControl className='w-full'>
                                             <SelectTrigger>
@@ -135,7 +135,7 @@ export default function CourseForm({ course }: ICourseForm) {
                             name='level'
                             render={({field}) => (
                                 <FormItem>
-                                    <FormLabel>{CONSTANTS.course_level}</FormLabel>
+                                    <FormLabel>{Constants.course_level}</FormLabel>
                                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                                         <FormControl className='w-full'>
                                             <SelectTrigger>
@@ -164,7 +164,7 @@ export default function CourseForm({ course }: ICourseForm) {
                             name='description'
                             render={({field}) => (
                                 <FormItem className='col-span-2'>
-                                    <FormLabel>{CONSTANTS.course_description}</FormLabel>
+                                    <FormLabel>{Constants.course_description}</FormLabel>
                                     <FormControl>
                                         <Textarea
                                             placeholder='Add the course description here.'
@@ -180,7 +180,7 @@ export default function CourseForm({ course }: ICourseForm) {
                             )}
                         />
                     </div>
-                    <Button type='submit'>{CONSTANTS.button_title}</Button>
+                    <Button type='submit'>{Constants.button_title}</Button>
                 </form>
             </Form>
         </div>

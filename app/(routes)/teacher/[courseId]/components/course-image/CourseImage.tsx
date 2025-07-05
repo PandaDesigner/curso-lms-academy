@@ -1,7 +1,7 @@
 "use client";
 import {ICourseImageProps} from "@/app/(routes)/teacher/[courseId]/components/course-image/CourseImage.type";
 import {TitleBlock} from "@/app/(routes)/teacher/[courseId]/components";
-import {CONSTANTS} from "@/app/(routes)/teacher/[courseId]/constants/constants.";
+import {Constants} from "@/app/(routes)/teacher/[courseId]/constants/constants";
 import {FileImage, Pencil} from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
@@ -31,7 +31,7 @@ const CourseImage = ({idCourse, imageCourse}: ICourseImageProps) => {
 
     return (
         <div className="p-4 rounded-lg bg-white drop-shadow-sm h-fit">
-            <TitleBlock title={CONSTANTS.course_image_title} icon={FileImage}/>
+            <TitleBlock title={Constants.course_image_title} icon={FileImage}/>
             {
                 isEditing
                 ?(

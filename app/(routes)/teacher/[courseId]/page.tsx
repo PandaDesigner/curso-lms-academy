@@ -3,6 +3,8 @@ import { auth } from '@clerk/nextjs/server';
 import HeaderCourse from './components/header-course/HeaderCourse';
 import CourseForm from './components/course-form/CourseForm';
 import CourseImage from "@/app/(routes)/teacher/[courseId]/components/course-image/CourseImage";
+import CoursePrice from "@/app/(routes)/teacher/[courseId]/components/course-price/CoursePrice";
+import ChapterBlock from "@/app/(routes)/teacher/[courseId]/components/chapters-block/ChaptersBlock";
 
 
 interface Props {
@@ -43,10 +45,10 @@ export default async function CourseDetailPage({ params }: Props) {
             <HeaderCourse idCourse={course.id} isPublished={course.isPublished} />
             <CourseForm course={course} />
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 my-6'>
-                <CourseImage idCourse={courseId} imageCourse={''}/>
-                <p>Course price</p>
+                <CourseImage idCourse={course.id} imageCourse={course.imageUrl}/>
+                <CoursePrice courseId={course.id} priceCourse={course.price} />
             </div>
-            <p>Course chapters</p>
+            <ChapterBlock />
         </div>
     )
 };
