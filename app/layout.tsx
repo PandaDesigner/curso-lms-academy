@@ -3,6 +3,7 @@ import {
   ClerkProvider,
 } from '@clerk/nextjs'
 import { Space_Grotesk } from "next/font/google";
+import "@uploadthing/react/styles.css";
 import "./globals.css";
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from './(routes)/(root)/components'

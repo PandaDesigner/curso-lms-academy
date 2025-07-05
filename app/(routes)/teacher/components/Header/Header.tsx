@@ -21,7 +21,7 @@ export const Header = () => {
                 </h1>
                 <Dialog>
                     <DialogTrigger asChild>
-                        <Button className='bg-violet-900 transition-all
+                        <Button className='bg-violet-900 transition-all cursor-pointer
                     border-violet-50 border-1 rounded-md text-white hover:bg-violet-950'>
                             {headerConstant.btnDialog}
                             <Plus />

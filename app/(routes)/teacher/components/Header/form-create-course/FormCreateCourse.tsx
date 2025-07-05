@@ -19,11 +19,13 @@ import { Input } from "@/components/ui/input"
 import { useForm } from 'react-hook-form';
 import { formTeacher, headerConstant } from '../constant/constants';
 import { toast } from 'sonner';
+import { useState } from 'react';
 
 
 
 export const FormCreateCourse = () => {
     const router = useRouter();
+    const [isLoading, setIsloading] = useState(false)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -34,6 +36,7 @@ export const FormCreateCourse = () => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
+            setIsloading(true)
             const response = await axios.post('/api/course', values);
             toast('Course created successfully 🎉');
             form.reset();
@@ -42,6 +45,8 @@ export const FormCreateCourse = () => {
         } catch (error) {
             console.error(error);
             toast.error('Error creating course 😢');
+        } finally {
+            setIsloading(false)
         }
 
     }
@@ -89,8 +94,9 @@ export const FormCreateCourse = () => {
                 />
                 <Button
                     type="submit"
+                    disabled={isLoading}
                     className='bg-violet-900 transition-all
-                    border-violet-50 border-1 rounded-md text-white hover:bg-violet-950'
+                    border-violet-50 border-1 rounded-md text-white hover:bg-violet-950 cursor-pointer'
                 >
                     {headerConstant.submitBtn}
                 </Button>
